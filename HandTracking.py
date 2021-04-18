@@ -14,7 +14,7 @@ mpDraw = mp.solutions.drawing_utils
 
 # Temporal variables
 pTime = 0      # Previous time
-cTIme = 0      # Current Time
+cTime = 0      # Current Time
 
 # Start recording
 while True:
@@ -34,7 +34,7 @@ while True:
     fps = 1/(cTime - pTime)
     pTime = cTime
 
-    cv2.putText(image, str(int(fps)), (15,15), (1), 3, cv2.FONT_HERSHEY_SIMPLEX)
+    cv2.putText(image, str(int(fps)), (75,75), cv2.FONT_HERSHEY_SIMPLEX, 3, (0,255,0), 3)
 
     cv2.imshow("Feed image", image)
     cv2.waitKey(1)
