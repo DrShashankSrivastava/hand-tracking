@@ -27,6 +27,15 @@ while True:
     # Check for multiple hands and process each of them
     if result.multi_hand_landmarks:
         for handLandmarks in result.multi_hand_landmarks:
+            for id, lm in enumerate(handLandmarks.landmark):
+                h, w, c = image.shape
+                # Convert hands landmark (0-20) positions to pixels
+                cx, cy = int(lm.x*w), int(lm.y*h)
+                print(id, cx, cy)
+                # Mark landmark 8 with a circle (index finger)
+                if id == 8:
+                    cv2.circle(image, (cx, cy), 15, (255, 0, 127), cv2.FILLED)
+
             mpDraw.draw_landmarks(image, handLandmarks, mpHands.HAND_CONNECTIONS)
 
     # Calculate and display fps
